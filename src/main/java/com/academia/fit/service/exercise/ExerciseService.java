@@ -57,6 +57,18 @@ public class ExerciseService {
     }
 
     /**
+     * Retorna a entidade Exercise pelo ID (uso exclusivo para outros serviços
+     * que precisam da entidade para construir relacionamentos).
+     *
+     * @param id ID do exercício
+     * @return Entidade Exercise
+     * @throws ExerciseNotFoundException se não encontrado
+     */
+    public Exercise getEntity(Long id) {
+        return getEntityById(id); // Se getEntityById falhar, a exceção é propagada
+    }
+
+    /**
      * Busca um exercício pelo ID.
      *
      * @param id ID do exercício
@@ -64,7 +76,7 @@ public class ExerciseService {
      * @throws ExerciseNotFoundException se não encontrado
      */
     @Transactional(readOnly = true)
-    public Exercise getEntityById(Long id) {
+    private Exercise getEntityById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ExerciseNotFoundException(ExceptionMessages.EXERCISE_NOT_FOUND));
     }

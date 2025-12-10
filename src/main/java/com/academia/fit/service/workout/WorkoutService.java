@@ -46,7 +46,7 @@ public class WorkoutService {
         // Adiciona itens usando o método addWorkoutItem para evitar duplicidade
         if (request.getItems() != null) {
             for (WorkoutItemRequest itemRequest : request.getItems()) {
-                Exercise exercise = exerciseService.getEntityById(itemRequest.getExerciseId());
+                Exercise exercise = exerciseService.getEntity(itemRequest.getExerciseId());
 
                 WorkoutItem item = WorkoutItem.builder()
                         .exercise(exercise)

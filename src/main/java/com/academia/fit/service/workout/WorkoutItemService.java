@@ -31,7 +31,7 @@ public class WorkoutItemService {
 
     public WorkoutItem addWorkoutItemToWorkout(Long memberWorkoutId, WorkoutItemRequest request) {
         MemberWorkout memberWorkout = memberWorkoutService.findByIdOrThrow(memberWorkoutId);
-        Exercise exercise = exerciseService.getEntityById(request.getExerciseId());
+        Exercise exercise = exerciseService.getEntity(request.getExerciseId());
 
         boolean exists = workoutItemRepository
                 .findByWorkoutAndExercise(memberWorkout.getWorkout(), exercise)
