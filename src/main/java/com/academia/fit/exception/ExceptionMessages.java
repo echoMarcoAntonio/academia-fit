@@ -25,15 +25,11 @@ public final class ExceptionMessages {
     // MEMBER_WORKOUT
     public static final String MEMBER_WORKOUT_NOT_FOUND = "Treino do aluno não encontrado ID: %d";
     public static final String DUPLICATE_MEMBER_WORKOUT = "O aluno já possui este treino atribuído.";
+    public static final String MEMBER_WORKOUT_VALIDATION_ERROR = "Vínculo Membro/Treino não encontrado para o Membro %d e Treino %d";
 
     // WORKOUT_ITEM
     public static final String WORKOUT_ITEM_NOT_FOUND = "Item de treino não encontrado ID: %d";
     public static final String DUPLICATE_WORKOUT_ITEM = "Exercício já adicionado para este treino.";
-
-    // ENTITY
-    public static final String SAMPLE_ENTITY_NOT_FOUND = "SampleEntity não encontrada.";
-    public static final String DUPLICATE_SAMPLE_ENTITY = "Campo uniqueField duplicado!";
-
 
     // GENÉRICO
     public static final String RESOURCE_NOT_FOUND = "Recurso não encontrado.";

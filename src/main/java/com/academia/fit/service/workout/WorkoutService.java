@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class WorkoutService {
 
     private final WorkoutRepository repository;
@@ -29,6 +28,7 @@ public class WorkoutService {
     /**
      * Cria um novo treino a partir de um DTO
      */
+    @Transactional
     public Workout createWorkout(WorkoutRequest request) {
 
         if (repository.existsByNameAndTimeInMinutes(request.getName(), request.getTimeInMinutes())) {
@@ -65,6 +65,7 @@ public class WorkoutService {
     /**
      * Retorna todos os treinos de forma paginada
      */
+    @Transactional
     public Page<Workout> findPaginated(Pageable pageable) {
         return repository.findAll(pageable);
     }
@@ -72,6 +73,7 @@ public class WorkoutService {
     /**
      * Retorna um treino pelo ID
      */
+    @Transactional
     public Workout findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -82,6 +84,7 @@ public class WorkoutService {
     /**
      * Atualiza os dados do treino
      */
+    @Transactional
     public Workout updateWorkout(Long id, WorkoutRequest request) {
         Workout workout = findById(id);
 
@@ -95,6 +98,7 @@ public class WorkoutService {
     /**
      * Remove um treino pelo ID
      */
+    @Transactional
     public void deleteWorkout(Long id) {
         findById(id);
         repository.deleteById(id);

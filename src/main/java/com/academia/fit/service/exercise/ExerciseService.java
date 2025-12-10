@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class ExerciseService {
 
     private final ExerciseRepository repository;
@@ -64,6 +63,7 @@ public class ExerciseService {
      * @return Entidade Exercise
      * @throws ExerciseNotFoundException se não encontrado
      */
+    @Transactional(readOnly = true)
     public Exercise getEntity(Long id) {
         return getEntityById(id); // Se getEntityById falhar, a exceção é propagada
     }

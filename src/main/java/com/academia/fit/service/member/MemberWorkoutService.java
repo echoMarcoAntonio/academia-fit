@@ -20,7 +20,6 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class MemberWorkoutService {
 
     private final MemberWorkoutRepository memberWorkoutRepository;
@@ -29,6 +28,7 @@ public class MemberWorkoutService {
     /**
      * Cria um novo vínculo entre Member e Workout.
      */
+    @Transactional
     public MemberWorkout createMemberWorkout(Long memberId, Long workoutId) {
         // Valida existência das entidades
         Member member = validator.validateExistingMember(memberId);
@@ -96,14 +96,18 @@ public class MemberWorkoutService {
     public MemberWorkout validateAndGet(Member member, Workout workout) {
         return findByMemberAndWorkout(member, workout)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "MemberWorkout not found for member " + member.getId() +
-                                " and workout " + workout.getId()
+                        String.format(
+                                ExceptionMessages.MEMBER_WORKOUT_VALIDATION_ERROR, // Usa a constante
+                                member.getId(),                                    // Insere o ID do membro
+                                workout.getId()                                    // Insere o ID do treino
+                        )
                 ));
     }
 
     /**
      * Exclui vínculo pelo ID, lançando exceção se não encontrado.
      */
+    @Transactional
     public void deleteByIdOrThrow(Long id) {
         MemberWorkout mw = findByIdOrThrow(id);
         memberWorkoutRepository.delete(mw);
