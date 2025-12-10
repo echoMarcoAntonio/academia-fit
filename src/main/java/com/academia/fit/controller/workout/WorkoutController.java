@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.*;
  * Controller REST dedicado para gerenciar a entidade Workout (Planos de Treino: Conjunto de WorkoutItems).
  */
 @RestController
-@RequestMapping("/workouts")
+@RequestMapping("/api/workouts")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class WorkoutController {
 
     private final WorkoutService service;

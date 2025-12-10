@@ -16,9 +16,8 @@ import java.util.List;
  * que são os exercícios específicos dentro de um treino atribuído.
  */
 @RestController
-@RequestMapping("/member-workouts/{memberWorkoutId}/items")
+@RequestMapping("/api/member-workouts/{memberWorkoutId}/items")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class WorkoutItemController {
 
     private final WorkoutItemService service;
